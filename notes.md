@@ -1,7 +1,7 @@
 # Crazy HTML canvas shooter game
 
 ## Basic Game checklist
-1. Create a player
+1. Create a player ✅
 2. Shoot Projectiles
 3. Create Enemies
 4. Detect collision on enemy/projectile hit.
@@ -18,3 +18,10 @@
 # Creating a player
 a. Simple circle 🟢
 b. When enemy touches player -- GAMEOVER😞
+
+# Creating Projectiles
+-> same property as player
+-> Additonal property "Velocity"
+-> Get mouse coordinates 
+
+-> Figure out physics of projectile.
