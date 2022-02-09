@@ -7,6 +7,7 @@ const c = canvas.getContext('2d');
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
+//Create Player
 class Player {
   constructor(x,y,radius,color){
     this.x = x
@@ -22,6 +23,9 @@ class Player {
     c.fill();
   }
 }
+const x = canvas.width / 2;
+const y = canvas.height / 2;
 
-const player = new Player(100,100,30,'blue');
+const player = new Player(x,y,30,'blue');
 player.draw();
+
