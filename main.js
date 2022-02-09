@@ -71,9 +71,8 @@ function animate() {
 
 //Automatically registers this event listener to window.
 addEventListener('click', (event) => {
-
+  //Projectile math
   const angle = Math.atan2(event.clientY - canvas.height/2, event.clientX - canvas.width/2);
-
   const velocity = {
     x: Math.cos(angle),
     y: Math.sin(angle)
