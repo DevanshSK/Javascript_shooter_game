@@ -2,7 +2,7 @@
 
 ## Basic Game checklist
 1. Create a player ✅
-2. Shoot Projectiles
+2. Shoot Projectiles ✅
 3. Create Enemies
 4. Detect collision on enemy/projectile hit.
 5. Detect collision on enemt/player hit.
@@ -25,3 +25,5 @@ b. When enemy touches player -- GAMEOVER😞
 -> Get mouse coordinates 
 
 -> Figure out physics of projectile.
+
+# Creating enemies
