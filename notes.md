@@ -27,3 +27,14 @@ b. When enemy touches player -- GAMEOVER😞
 -> Figure out physics of projectile.
 
 # Creating enemies
+-> Same as Projectiles
+-> Move toward center 
+-> Spawn outside canvas so to prevent Badluck😞
+-> Use ternaty and random to Spawn outside canvas.
+-> USe ifs to spawn random outside canvas.
+-> Example if X is on left or right, then Y can be a random value.
+-> Example if Y is on up or down, then X can be a random value.
+-> Coded random size of enemy.
+-> Enemy size ranges from 4 to 30 px
+
+# Detect Collision
