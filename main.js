@@ -1,9 +1,9 @@
 //Initalise project
 const canvas = document.querySelector('canvas');
-
+// Creates a 2D canvas
 const c = canvas.getContext('2d');
 
-//Width and height of canvas.
+//Sets Width and height of canvas.
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
