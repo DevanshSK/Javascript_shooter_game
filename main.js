@@ -112,11 +112,12 @@ function spawnEnemies(){
     }
 
     enemies.push(new Enemies(x,y,radius,color,velocity));
-    console.log(enemies);
-  }, 1000);
+    // console.log(enemies);
+ }, 1000);
 }
 
 //Animation loop for projectiles
+//Renders Every frame continously
 function animate() {
   requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
@@ -126,8 +127,27 @@ function animate() {
     projectile.update();
   })
 
-  enemies.forEach(enemy => {
+  enemies.forEach((enemy, indexEnemy) => {
     enemy.update();
+
+    //Collision Detection
+    projectiles.forEach((projectile, indexProjectile) => {
+      const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y);
+      
+      //Objects touch
+      if (dist - enemy.radius - projectile.radius < 1){
+        //executes if both bodies are collided.
+        //Removes Enemy and Projectile.
+
+        setTimeout(() => {
+          //Stops flashing of enemy.
+          enemies.splice(indexEnemy,1);
+          projectiles.splice(indexProjectile,1);
+          console.log('Enemy is dead.');
+        }, 0);
+      }
+
+    })
   })
 }
 
