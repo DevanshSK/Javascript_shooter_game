@@ -6,7 +6,7 @@
 3. Create Enemies ✅
 4. Detect collision on enemy/projectile hit. ✅
 5. Detect collision on enemt/player hit. ✅
-6. Remove off screen projectiles.
+6. Remove off screen projectiles. ✅
 7. Colourize game
 8. Shrink enemies on hit.
 9. Create particle explosion on hit.
