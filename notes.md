@@ -54,3 +54,4 @@ b. When enemy touches player -- GAMEOVER😞
 -> This waits till next frame to start removing the actual enemy from the Array. 
 
 # Detect Collision between enemies and players.
+-> Pause the game when enemy touches the player.[And display the end screen.]
