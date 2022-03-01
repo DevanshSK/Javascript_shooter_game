@@ -5,7 +5,7 @@
 2. Shoot Projectiles ✅
 3. Create Enemies ✅
 4. Detect collision on enemy/projectile hit. ✅
-5. Detect collision on enemt/player hit.
+5. Detect collision on enemt/player hit. ✅
 6. Remove off screen projectiles.
 7. Colourize game
 8. Shrink enemies on hit.
@@ -20,13 +20,13 @@ a. Simple circle 🟢
 b. When enemy touches player -- GAMEOVER😞
 
 # Creating Projectiles
--> same property as player
--> Additonal property "Velocity"
--> Get mouse coordinates 
+-> same property as player 🙂
+-> Additonal property "Velocity"🚤
+-> Get mouse coordinates 🎯
 
 -> Figure out physics of projectile.
 
-# Creating enemies
+# Creating enemies😈
 -> Same as Projectiles
 -> Move toward center 
 
@@ -55,3 +55,11 @@ b. When enemy touches player -- GAMEOVER😞
 
 # Detect Collision between enemies and players.
 -> Pause the game when enemy touches the player.[And display the end screen.]
+
+-> Pausing the game.⏸️
+-> Use cancelAnimationFrame to cancel the game at current frame.
+-> Store current frame in a variable.
+
+# Remove off screen projectiles.
+-> Remove the projectiles as soon as they cross the canvas.
+-> Use splice method to remove projectile.

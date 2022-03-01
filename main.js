@@ -113,17 +113,37 @@ function spawnEnemies() {
 
 //Animation loop for projectiles
 //Renders Every frame continously
+let animateId;
 function animate() {
-  requestAnimationFrame(animate);
+  //Store frame number inside animateID
+  animateId = requestAnimationFrame(animate);
+
   c.clearRect(0, 0, canvas.width, canvas.height);
   player.draw();
 
-  projectiles.forEach((projectile) => {
+  projectiles.forEach((projectile, index) => {
     projectile.update();
+
+    //Remove projectile when the go out of canvas.
+    //remove from edges of the screen.
+    if (projectile.x + projectile.radius < 0 || projectile.x - projectile.radius > canvas.width || projectile.y + projectile.radius < 0 || projectile.y - projectile.radius > canvas.height){
+
+      setTimeout(() => {
+        projectiles.splice(index, 1);
+      }, 0);
+
+    }
   });
 
   enemies.forEach((enemy, indexEnemy) => {
     enemy.update();
+
+    //Check for player collision.
+    const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
+    if (dist - player.radius - enemy.radius < 1){
+      cancelAnimationFrame(animateId);
+      console.log('Player is dead.');
+    }
 
     //Collision Detection
     projectiles.forEach((projectile, indexProjectile) => {
@@ -138,7 +158,7 @@ function animate() {
           //Stops flashing of enemy.
           enemies.splice(indexEnemy, 1);
           projectiles.splice(indexProjectile, 1);
-          console.log("Enemy is dead.");
+          // console.log("Enemy is dead.");
         }, 0);
       }
     });
