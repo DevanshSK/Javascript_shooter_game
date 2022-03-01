@@ -52,3 +52,5 @@ b. When enemy touches player -- GAMEOVER😞
 
 -> Use setTimeout() to remove flashing of enemies.
 -> This waits till next frame to start removing the actual enemy from the Array. 
+
+# Detect Collision between enemies and players.
