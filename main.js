@@ -1,4 +1,8 @@
 //Initalise project
+
+//All GSAP functions
+// console.log(gsap);
+
 const canvas = document.querySelector("canvas");
 // Creates a 2D canvas
 const c = canvas.getContext("2d");
@@ -74,7 +78,7 @@ class Enemies {
 const x = canvas.width / 2;
 const y = canvas.height / 2;
 
-const player = new Player(x, y, 30, "blue");
+const player = new Player(x, y, 10, "white");
 
 //Array for management of multiple instances of projectile
 const projectiles = [];
@@ -97,7 +101,7 @@ function spawnEnemies() {
       x = Math.random() * canvas.width;
     }
 
-    const color = "green";
+    const color = `hsl(${Math.random() * 360}, 50%, 50%)`;
 
     // Destination Pehle
     const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x);
@@ -118,7 +122,8 @@ function animate() {
   //Store frame number inside animateID
   animateId = requestAnimationFrame(animate);
 
-  c.clearRect(0, 0, canvas.width, canvas.height);
+  c.fillStyle = 'rgba(0,0,0,0.1)';
+  c.fillRect(0, 0, canvas.width, canvas.height);
   player.draw();
 
   projectiles.forEach((projectile, index) => {
@@ -149,17 +154,30 @@ function animate() {
     projectiles.forEach((projectile, indexProjectile) => {
       const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y);
 
-      //Objects touch
+      //Projectiles touch enemies
       if (dist - enemy.radius - projectile.radius < 1) {
         //executes if both bodies are collided.
         //Removes Enemy and Projectile.
 
-        setTimeout(() => {
-          //Stops flashing of enemy.
-          enemies.splice(indexEnemy, 1);
-          projectiles.splice(indexProjectile, 1);
-          // console.log("Enemy is dead.");
-        }, 0);
+        //Shrinks the enemy
+        if (enemy.radius - 10 > 5) {
+          //Using gsap to shrink radius smoothly.
+          gsap.to(enemy, {
+            radius: enemy.radius - 10
+          })
+
+          setTimeout(() => {
+            projectiles.splice(indexProjectile, 1);
+          }, 0);
+
+        }else{
+          setTimeout(() => {
+            //Stops flashing of enemy.
+            enemies.splice(indexEnemy, 1);
+            projectiles.splice(indexProjectile, 1);
+            // console.log("Enemy is dead.");
+          }, 0);
+        }
       }
     });
   });
@@ -173,12 +191,12 @@ addEventListener("click", (event) => {
     event.clientX - canvas.width / 2
   );
   const velocity = {
-    x: Math.cos(angle),
-    y: Math.sin(angle),
+    x: Math.cos(angle) * 5,
+    y: Math.sin(angle) * 5,
   };
 
   projectiles.push(
-    new Projectile(canvas.width / 2, canvas.height / 2, 5, "red", velocity)
+    new Projectile(canvas.width / 2, canvas.height / 2, 5, "white", velocity)
   );
 });
 

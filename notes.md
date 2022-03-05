@@ -7,8 +7,8 @@
 4. Detect collision on enemy/projectile hit. ✅
 5. Detect collision on enemt/player hit. ✅
 6. Remove off screen projectiles. ✅
-7. Colourize game
-8. Shrink enemies on hit.
+7. Colourize game ✅
+8. Shrink enemies on hit.✅
 9. Create particle explosion on hit.
 10. Add score.
 11. Add game over UI.
@@ -63,3 +63,18 @@ b. When enemy touches player -- GAMEOVER😞
 # Remove off screen projectiles.
 -> Remove the projectiles as soon as they cross the canvas.
 -> Use splice method to remove projectile.
+
+# Colorise and decorate game.🎨
+-> use fillRect and fillStyle to make fade effect on enemy and projectile.
+-> Change color of player and projectile to white.
+-> Increase velocity of projectile.
+-> Randomise the color of enemies using HSL.
+
+# Shrink enemies on hit
+-> Shrink enemies by updating size.
+-> Dont make enemies too much small.
+-> Use GSAP for smooth shrinkage.
+-> Use tween - interpolate - transition to shrink enemies.
+-> use to method of gsap to make this happen.
+
+# Create particle burst effect💥
