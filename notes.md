@@ -78,3 +78,9 @@ b. When enemy touches player -- GAMEOVER😞
 -> use to method of gsap to make this happen.
 
 # Create particle burst effect💥
+-> Create a Particle class like enemy
+-> use for loop to create particles at enemy-particle collison.
+-> Store these particles instances in an array.
+-> Fade prticles
+-> use c.save() to put in state where we call global canvas function which affect the code below c.save().
+-> c.restore()

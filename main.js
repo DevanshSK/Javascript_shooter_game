@@ -73,6 +73,34 @@ class Enemies {
     this.x = this.x + this.velocity.x;
     this.y = this.y + this.velocity.y;
   }
+
+}
+//Particles for explosion
+class Particles {
+  constructor(x, y, radius, color, velocity) {
+    this.x = x;
+    this.y = y;
+    this.radius = radius;
+    this.color = color;
+    this.velocity = velocity;
+    this.alpha = 1;
+  }
+
+  draw() {
+    c.save();
+    c.globalAlpha = .2;
+    c.beginPath();
+    c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+    c.fillStyle = this.color;
+    c.fill();
+    c.restore();
+  }
+
+  update() {
+    this.draw();
+    this.x = this.x + this.velocity.x;
+    this.y = this.y + this.velocity.y;
+  }
 }
 
 const x = canvas.width / 2;
@@ -83,6 +111,7 @@ const player = new Player(x, y, 10, "white");
 //Array for management of multiple instances of projectile
 const projectiles = [];
 const enemies = [];
+const particles = [];
 
 function spawnEnemies() {
   setInterval(() => {
@@ -126,6 +155,10 @@ function animate() {
   c.fillRect(0, 0, canvas.width, canvas.height);
   player.draw();
 
+  particles.forEach(particle => {
+    particle.update();
+  })
+
   projectiles.forEach((projectile, index) => {
     projectile.update();
 
@@ -158,6 +191,15 @@ function animate() {
       if (dist - enemy.radius - projectile.radius < 1) {
         //executes if both bodies are collided.
         //Removes Enemy and Projectile.
+
+        //Particle burst effect
+        for (let i = 0; i<8; i++){
+          particles.push(new Particles(projectile.x, projectile.y, 3, enemy.color, {
+              x: Math.random() - 0.5,
+              y: Math.random() - 0.5
+            }
+          ))
+        }
 
         //Shrinks the enemy
         if (enemy.radius - 10 > 5) {
