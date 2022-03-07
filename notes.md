@@ -9,8 +9,8 @@
 6. Remove off screen projectiles. ✅
 7. Colourize game ✅
 8. Shrink enemies on hit.✅
-9. Create particle explosion on hit.
-10. Add score.
+9. Create particle explosion on hit.✅
+10. Add score.✅
 11. Add game over UI.
 12. Add restart button.
 13. Add start game button.
@@ -23,7 +23,6 @@ b. When enemy touches player -- GAMEOVER😞
 -> same property as player 🙂
 -> Additonal property "Velocity"🚤
 -> Get mouse coordinates 🎯
-
 -> Figure out physics of projectile.
 
 # Creating enemies😈
@@ -91,3 +90,4 @@ b. When enemy touches player -- GAMEOVER😞
 # Adding score on HTML
 -> Keep tect on HTML.
 -> Position fixed so it does not create any problems.
+-> Different score on deleting and shrinking enemy.

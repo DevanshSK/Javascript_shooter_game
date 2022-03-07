@@ -12,7 +12,7 @@ canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 const scoreEL = document.querySelector('#scoreEL');
-
+console.log(scoreEL);
 //Creates player
 class Player {
   constructor(x, y, radius, color) {
@@ -204,8 +204,6 @@ function animate() {
       if (dist - enemy.radius - projectile.radius < 1) {
         //executes if both bodies are collided.
 
-
-
         //Removes Enemy and Projectile.
 
         //Particle burst effect
@@ -219,6 +217,12 @@ function animate() {
 
         //Shrinks the enemy
         if (enemy.radius - 10 > 5) {
+
+          //Increase our score
+          score += 100;
+          scoreEL.innerHTML = score;
+          console.log(score);
+
           //Using gsap to shrink radius smoothly.
           gsap.to(enemy, {
             radius: enemy.radius - 10
@@ -230,6 +234,12 @@ function animate() {
 
         }else{
           setTimeout(() => {
+            
+            //Remove from screen altogether
+            score += 250;
+            scoreEL.innerHTML = score;
+            console.log(score);
+
             //Stops flashing of enemy.
             enemies.splice(indexEnemy, 1);
             projectiles.splice(indexProjectile, 1);
