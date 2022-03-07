@@ -87,3 +87,7 @@ b. When enemy touches player -- GAMEOVER😞
 -> Update alpha to devrease in update funcntion.
 -> Amount of particles depend on enemy radius
 -> Add power and friction to the velocity of the particle. 
+
+# Adding score on HTML
+-> Keep tect on HTML.
+-> Position fixed so it does not create any problems.

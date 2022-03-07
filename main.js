@@ -11,6 +11,9 @@ const c = canvas.getContext("2d");
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
+const scoreEL = document.querySelector('#scoreEL');
+console.log(score);
+
 //Creates player
 class Player {
   constructor(x, y, radius, color) {
@@ -151,6 +154,7 @@ function spawnEnemies() {
 //Animation loop for projectiles
 //Renders Every frame continously
 let animateId;
+let score = 0;
 function animate() {
   //Store frame number inside animateID
   animateId = requestAnimationFrame(animate);
@@ -199,6 +203,8 @@ function animate() {
       //Projectiles touch enemies
       if (dist - enemy.radius - projectile.radius < 1) {
         //executes if both bodies are collided.
+
+
         //Removes Enemy and Projectile.
 
         //Particle Explosion
