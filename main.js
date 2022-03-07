@@ -14,7 +14,7 @@ canvas.height = innerHeight;
 const scoreEL = document.querySelector('#scoreEL');
 const startGameBtn = document.querySelector('#startGameBtn');
 const modalEl = document.querySelector('#modalEl');
-const scoreUI = document.querySelector('#scoreUI');
+const bigscoreEL = document.querySelector('#bigscoreEL');
 
 //Creates player
 class Player {
@@ -115,12 +115,21 @@ class Particles {
 const x = canvas.width / 2;
 const y = canvas.height / 2;
 
-const player = new Player(x, y, 10, "white");
 
-//Array for management of multiple instances of projectile
-const projectiles = [];
-const enemies = [];
-const particles = [];
+//Initialise player, projectiles, enemies, particles.
+let player = new Player(x, y, 10, "white");
+let projectiles = [];
+let enemies = [];
+let particles = [];
+
+function init(){
+  player = new Player(x, y, 10, "white");
+  projectiles = [];
+  enemies = [];
+  particles = [];
+  score = 0;
+  scoreEL.innerHTML = score;
+}
 
 function spawnEnemies() {
   setInterval(() => {
@@ -196,7 +205,7 @@ function animate() {
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
     if (dist - player.radius - enemy.radius < 1){
       cancelAnimationFrame(animateId);
-      scoreUI.innerHTML = score;
+      bigscoreEL.innerHTML = score;
       modalEl.style.display = 'flex';
     }
 
@@ -274,7 +283,8 @@ addEventListener("click", (event) => {
 
 //Start game button
 startGameBtn.addEventListener('click', () => {
+  modalEl.style.display = 'none';
+  init();
   animate();
   spawnEnemies();
-  modalEl.style.display = 'none';
 })

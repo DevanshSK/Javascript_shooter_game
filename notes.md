@@ -12,7 +12,7 @@
 9. Create particle explosion on hit.✅
 10. Add score.✅
 13. Add start game button.✅
-11. Add game over UI.
+11. Add game over UI.✅
 12. Add restart button.
 
 # Creating a player
@@ -88,6 +88,12 @@ b. When enemy touches player -- GAMEOVER😞
 -> Add power and friction to the velocity of the particle. 
 
 # Adding score on HTML
--> Keep tect on HTML.
+-> Keep text on HTML.
 -> Position fixed so it does not create any problems.
 -> Different score on deleting and shrinking enemy.
+
+# Add start game button ui
+-> Change display using JS event listener. 
+
+# Restart game button
+-> Reset the game.
