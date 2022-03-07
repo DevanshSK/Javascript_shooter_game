@@ -76,6 +76,7 @@ class Enemies {
 
 }
 //Particles for explosion
+const friction = 0.99;
 class Particles {
   constructor(x, y, radius, color, velocity) {
     this.x = x;
@@ -88,7 +89,7 @@ class Particles {
 
   draw() {
     c.save();
-    c.globalAlpha = .2;
+    c.globalAlpha = this.alpha;
     c.beginPath();
     c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
     c.fillStyle = this.color;
@@ -98,8 +99,11 @@ class Particles {
 
   update() {
     this.draw();
+    this.velocity.x *= friction;
+    this.velocity.y *= friction;
     this.x = this.x + this.velocity.x;
     this.y = this.y + this.velocity.y;
+    this.alpha -= 0.01;
   }
 }
 
@@ -155,8 +159,13 @@ function animate() {
   c.fillRect(0, 0, canvas.width, canvas.height);
   player.draw();
 
-  particles.forEach(particle => {
-    particle.update();
+  particles.forEach((particle, index) => {
+    if (particle.alpha <= 0){
+      particles.splice(index,1)
+    }else{
+
+      particle.update();
+    }
   })
 
   projectiles.forEach((projectile, index) => {
@@ -192,11 +201,11 @@ function animate() {
         //executes if both bodies are collided.
         //Removes Enemy and Projectile.
 
-        //Particle burst effect
-        for (let i = 0; i<8; i++){
-          particles.push(new Particles(projectile.x, projectile.y, 3, enemy.color, {
-              x: Math.random() - 0.5,
-              y: Math.random() - 0.5
+        //Particle Explosion
+        for (let i = 0; i< enemy.radius * 2; i++){
+          particles.push(new Particles(projectile.x, projectile.y, Math.random() * 2, enemy.color, {
+              x: (Math.random() - 0.5) * (Math.random() * 6),
+              y: (Math.random() - 0.5) * (Math.random() * 6)
             }
           ))
         }
