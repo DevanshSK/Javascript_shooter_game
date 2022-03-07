@@ -12,7 +12,10 @@ canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 const scoreEL = document.querySelector('#scoreEL');
-console.log(scoreEL);
+const startGameBtn = document.querySelector('#startGameBtn');
+const modalEl = document.querySelector('#modalEl');
+const scoreUI = document.querySelector('#scoreUI');
+
 //Creates player
 class Player {
   constructor(x, y, radius, color) {
@@ -193,7 +196,8 @@ function animate() {
     const dist = Math.hypot(player.x - enemy.x, player.y - enemy.y);
     if (dist - player.radius - enemy.radius < 1){
       cancelAnimationFrame(animateId);
-      console.log('Player is dead.');
+      scoreUI.innerHTML = score;
+      modalEl.style.display = 'flex';
     }
 
     //Collision Detection
@@ -268,5 +272,9 @@ addEventListener("click", (event) => {
   );
 });
 
-animate();
-spawnEnemies();
+//Start game button
+startGameBtn.addEventListener('click', () => {
+  animate();
+  spawnEnemies();
+  modalEl.style.display = 'none';
+})
