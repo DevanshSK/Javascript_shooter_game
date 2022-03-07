@@ -9,7 +9,7 @@
 6. Remove off screen projectiles. ✅
 7. Colourize game ✅
 8. Shrink enemies on hit.✅
-9. Create particle explosion on hit.✅
+9. Create particle explosion on hit.
 10. Add score.
 11. Add game over UI.
 12. Add restart button.
@@ -84,7 +84,7 @@ b. When enemy touches player -- GAMEOVER😞
 -> Fade prticles
 -> use c.save() to put in state where we call global canvas function which affect the code below c.save().
 -> c.restore()
--> Update alpha to devrease in update funcntion.
+-> Update alpha to decrease in update funcntion.
 -> Amount of particles depend on enemy radius
 -> Add power and friction to the velocity of the particle. 
 

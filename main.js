@@ -12,7 +12,6 @@ canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 const scoreEL = document.querySelector('#scoreEL');
-console.log(score);
 
 //Creates player
 class Player {
@@ -106,7 +105,7 @@ class Particles {
     this.velocity.y *= friction;
     this.x = this.x + this.velocity.x;
     this.y = this.y + this.velocity.y;
-    this.alpha -= 0.01;
+    this.alpha -= 0.01; 
   }
 }
 
@@ -164,11 +163,12 @@ function animate() {
   player.draw();
 
   particles.forEach((particle, index) => {
+    //Explosion
     if (particle.alpha <= 0){
-      particles.splice(index,1)
+      particles.splice(index, 1);
     }else{
-
       particle.update();
+
     }
   })
 
@@ -205,13 +205,14 @@ function animate() {
         //executes if both bodies are collided.
 
 
+
         //Removes Enemy and Projectile.
 
-        //Particle Explosion
+        //Particle burst effect
         for (let i = 0; i< enemy.radius * 2; i++){
           particles.push(new Particles(projectile.x, projectile.y, Math.random() * 2, enemy.color, {
               x: (Math.random() - 0.5) * (Math.random() * 6),
-              y: (Math.random() - 0.5) * (Math.random() * 6)
+              y: (Math.random() - 0.5) * (Math.random() * 6) 
             }
           ))
         }
